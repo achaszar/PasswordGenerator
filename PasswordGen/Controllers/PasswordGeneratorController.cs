@@ -15,8 +15,8 @@ namespace PasswordGen.Controllers
             GenPasswordViewModel genPasswordModel = new GenPasswordViewModel();
             const string UpperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string LowerLetters = "abcdefghijklmnopqrstuvwxyz";
-            const string Numbers = "0123456789";
-            const string Symbols = ".?!+-[]{}@$*";
+            const string Numbers = "01234567899876543210";
+            const string Symbols = ".?!+-[]{}@$*.?!+-[]{}@$*";
 
             string myPassword = "";
             string passwordResult = "";
@@ -40,7 +40,6 @@ namespace PasswordGen.Controllers
             if (wantSymbols)
             {
                 myPassword += Symbols;
-
             }
 
             else
