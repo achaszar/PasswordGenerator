@@ -1,0 +1,51 @@
+﻿@model GenPasswordViewModel
+
+@{
+}
+
+<div class="text-center form-control">
+    <form method="PasswordGenerator" action="GeneratePassword">
+        <div class="mb-3">
+            <div>
+                <label for="length" class="form-label">Password Length: </label>
+            </div>
+            <div>
+                <input type="number" class="form-control" id="length" name="length">
+            </div>
+        </div>
+        <div class="mb-3 form-check">
+            <div>
+                <label class="form-check-label" for="wantUpper">Do you want uppercase Letters in your password?</label>
+            </div>
+            <div>
+                <input type="checkbox" class="form-check-input" id="wantUpper" name="wantUpper" value="true">
+            </div>
+        </div>
+        <div class="mb-3 form-check">
+            <div>
+                <label class="form-check-label" for="wantLower">Do you want lowercase letters in the password?</label>
+            </div>
+            <div>
+                <input type="checkbox" class="form-check-input" id="wantLower" name="wantLower" value="true">
+            </div>
+        </div>
+        <div class="mb-3 form-check">
+            <div>
+                <label class="form-check-label" for="wantNumbers">Do you want numbers in the password?</label>
+            </div>
+            <div>
+                <input type="checkbox" class="form-check-input" id="wantNumbers" name="wantNumbers" value="true">
+            </div>
+        </div>
+        <div class="mb-3 form-check">
+            <div>
+                <label class="form-check-label" for="wantSymbols">Do you want symbols in the password?</label>
+            </div>
+            <div>
+                <input type="checkbox" class="form-check-input" id="wantSymbols" name="wantSymbols" value="true">                
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Generate Password</button>
+    </form>
+</div>
