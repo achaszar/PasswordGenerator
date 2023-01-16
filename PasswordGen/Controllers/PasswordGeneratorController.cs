@@ -5,14 +5,15 @@ namespace PasswordGen.Controllers
 {
     public class PasswordGeneratorController : Controller
     {
+        //Create an instance of the model
+        private GenPasswordViewModel passwordModel = new GenPasswordViewModel();
+
         public IActionResult Index()
         {
-            GenPasswordViewModel password= new GenPasswordViewModel();
-            return View(password);
+            return View(passwordModel);
         }
         public IActionResult GeneratePassword(int length, bool wantUpper, bool wantLower, bool wantNumbers, bool wantSymbols)
         {
-            GenPasswordViewModel genPasswordModel = new GenPasswordViewModel();
             const string UpperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string LowerLetters = "abcdefghijklmnopqrstuvwxyz";
             const string Numbers = "01234567899876543210";
@@ -20,7 +21,8 @@ namespace PasswordGen.Controllers
 
             string myPassword = "";
             string passwordResult = "";
-            string DefaultPassword = "RunnerRunner321";
+            //Moved the default password to the model definition
+            //string DefaultPassword = "RunnerRunner321";
 
             if (wantUpper)
             {
@@ -44,7 +46,8 @@ namespace PasswordGen.Controllers
 
             else
             {
-                myPassword += DefaultPassword;
+                //If nothing else comes through, use the only lowercase letters
+                myPassword = LowerLetters;
             }
 
             Random random = new Random();
@@ -54,8 +57,8 @@ namespace PasswordGen.Controllers
                 char letter = myPassword[random.Next(0, myPassword.Length)];
                 passwordResult += letter;
             }
-            genPasswordModel.PasswordResult = passwordResult;
-            return View("Index", genPasswordModel);
+            passwordModel.PasswordResult = passwordResult;
+            return View("Index", passwordModel);
 
         }
     }

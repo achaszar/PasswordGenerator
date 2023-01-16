@@ -23,10 +23,11 @@ namespace PasswordGen.Controllers
             return View();
         }
 
-        public IActionResult PWGen()
-        {
-            return View();
-        }
+        //PWGen is not defined, so commenting out for now
+        //public IActionResult PWGen()
+        //{
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
