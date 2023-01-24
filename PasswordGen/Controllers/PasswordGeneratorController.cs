@@ -12,44 +12,35 @@ namespace PasswordGen.Controllers
         {
             return View(passwordModel);
         }
-        public IActionResult GeneratePassword(int length, bool wantUpper, bool wantLower, bool wantNumbers, bool wantSymbols)
+        public IActionResult GeneratePassword(int length, bool wantUpper, bool wantSymbols)
         {
             const string UpperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const string LowerLetters = "abcdefghijklmnopqrstuvwxyz";
-            const string Numbers = "01234567899876543210";
+            const string DefaultPassword = "abcdefghijklmnopqrstuvwxyz01234567899876543210";
             const string Symbols = ".?!+-[]{}@$*.?!+-[]{}@$*";
 
             string myPassword = "";
             string passwordResult = "";
-            //Moved the default password to the model definition
-            //string DefaultPassword = "RunnerRunner321";
 
-            if (wantUpper)
+            if (wantUpper && wantSymbols)
             {
-                myPassword += UpperLetters;
-            }
-
-            if (wantLower)
-            {
-                myPassword+= LowerLetters;
+                myPassword = DefaultPassword + UpperLetters + Symbols;
             }
             
-            if (wantNumbers)
+            else if (wantSymbols)
             {
-                myPassword += Numbers;
+                myPassword = DefaultPassword + Symbols;
             }
 
-            if (wantSymbols)
+            else if (wantUpper)
             {
-                myPassword += Symbols;
+                myPassword = DefaultPassword + UpperLetters;
             }
 
             else
             {
-                //If nothing else comes through, use the only lowercase letters
-                myPassword = LowerLetters;
+                myPassword = DefaultPassword;
             }
-
+                        
             Random random = new Random();
 
             for (int i = 0; i < length; i++)
